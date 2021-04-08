@@ -134,6 +134,16 @@
   font-weight: 560;
 }
 
+.blog-details article button {
+  width: 60px;
+  color: white;
+  border: none;
+  padding: 7px;
+  font-size: 13px;
+  border-radius: 10px;
+  background-color: #76185a;
+}
+
 .blog-details .backBtn {
   padding: 20px 0 10px;
 }
@@ -176,6 +186,12 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding-top: 30px;
+}
+
+.new-blog form input {
+  height: 20px;
+  font-size: 15px;
+  text-align: center;
 }
 
 .new-blog form textarea {

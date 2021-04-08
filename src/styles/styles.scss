@@ -96,6 +96,15 @@
             text-align: justify;
             font-weight: 560;
         }
+        button{
+            width: 60px;
+            color: white;
+            border: none;
+            padding: 7px;
+            font-size: 13px;
+            border-radius: 10px;
+            background-color: rgb(118, 24, 90);
+        }
     }
 
     .backBtn{
@@ -123,6 +132,11 @@
         color: rgb(118, 24, 90);
     }
     form{
+        input{
+            height: 20px;
+            font-size: 15px;
+            text-align: center;
+        }
         textarea{
             height: 200px;
         }
