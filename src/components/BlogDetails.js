@@ -10,7 +10,7 @@ const BlogDetails = () => {
 
     const handleClick= () => {
 
-        fetch("http://localhost:8000/blogs/"+ blog.id, {
+        fetch("http://localhost:4000/find"+ blog.id, {
             method: "DELETE"
         }).then(()=>{
             history.push("/");

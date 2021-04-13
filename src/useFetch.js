@@ -15,7 +15,7 @@ const useFetch = (url) => {
             setData(data);
         })
         
-        return () => abortCont.abort(); 
+        return () => abortCont.abort();
 
     }, [url]);
 

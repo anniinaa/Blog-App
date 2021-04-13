@@ -3,7 +3,9 @@ import BlogList from "./BlogList";
 
 const Home = () => {   
     
-    const {data: blogs} = useFetch("http://localhost:8000/blogs");
+    const {data: blogs} = useFetch("http://localhost:4000/find");
+
+  
 
     return (
         <div className="home">

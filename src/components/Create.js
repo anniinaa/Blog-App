@@ -21,9 +21,9 @@ const Create = () => {
             body: JSON.stringify(blog)
         }).then(()=>{
 
-            setInterval(()=>{
+            // setInterval(()=>{
                 history.push("/");
-            },1500);
+            // },1500);
         })
 
 
