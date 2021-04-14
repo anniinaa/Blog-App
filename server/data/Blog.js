@@ -1,20 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let blog = new Schema(
+const blog = new Schema(
   {
     title: {
-      type: String
+      type: String,
     },
     body: {
-      type: String
+      type: String,
     },
     author: {
-        type: String
-      },
-      id: {
-        type: Number
-      },
+      type: String,
+    },
   },
   { collection: "blogs" }
 );

@@ -1,0 +1,19 @@
+###
+GET http://localhost:4000/find/60700317edca402f2c76bad9
+
+###
+
+
+POST http://localhost:4000/insert
+content-type: application/json
+
+{
+    "title": "test",
+    "body": "Wed, 21 Oct 2015 18:27:50 GMT",
+    "author": "Janne"
+}
+
+
+### Delete
+DELETE http://localhost:4000/delete/60700317edca402f2c76bad9
+
