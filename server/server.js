@@ -1,14 +1,12 @@
 const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const path = require("path");
+
 const app = express();
 const router = express.Router();
-const port = 4000;
-const cors = require("cors");
-
 app.use(cors());
-
-const mongoose = require("mongoose");
 const Blog = require("./data/Blog.js");
-
 const env = require("./env.js");
 
 mongoose.connect(env.uri, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -21,8 +19,10 @@ connection.once("open", function () {
 
 app.use(express.json());
 
-app.use("/", router);
+app.use(express.static(path.join(__dirname, "../build")));
 
+app.use("/", router);
+hero;
 router.route("/insert").post(async (req, res) => {
   const { title, body, author } = req.body;
   const newBlog = new Blog({
@@ -30,9 +30,7 @@ router.route("/insert").post(async (req, res) => {
     body,
     author,
   });
-  console.log("newBlog", newBlog);
   const response = await Blog.create(newBlog);
-  console.log(response);
   return res.send(response);
 });
 
@@ -46,12 +44,18 @@ router.route("/find").get(function (req, res) {
   });
 });
 
-//Uusi route delete
+router.route("/delete/:blogId").delete(async (req, res) => {
+  const blogId = req.params.blogId;
+  await Blog.deleteOne({ _id: blogId });
+  return res.status(204).end();
+});
 
 router.route("/find/:blogId").get(async (req, res) => {
   const blog = await Blog.findById(req.params.blogId);
   return res.send(blog);
 });
+
+const port = process.env.PORT || 4000;
 
 app.listen(port, function () {
   console.log("Server is running on Port: " + port);

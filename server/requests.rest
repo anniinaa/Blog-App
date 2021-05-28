@@ -1,5 +1,6 @@
 ###
-GET http://localhost:4000/find/60700317edca402f2c76bad9
+GET http://localhost:4000/find
+content-type: application/json
 
 ###
 
@@ -15,5 +16,5 @@ content-type: application/json
 
 
 ### Delete
-DELETE http://localhost:4000/delete/60700317edca402f2c76bad9
+DELETE http://localhost:4000/delete/6076df1c1e726017a45d0219
 

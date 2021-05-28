@@ -3,8 +3,15 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 
+const localhostUrl = "http://localhost:4000/";
+const hostUrl = "https://blog-app-654.herokuapp.com/";
+
+const serverUrl =
+  process.env.NODE_ENV === "development" ? localhostUrl : hostUrl;
+
 const getBlog = async (blogId) => {
-  const result = await axios.get(`http://localhost:4000/find/${blogId}`);
+  const result = await axios.get(`${serverUrl}find/${blogId}`);
+
   return result.data;
 };
 
@@ -18,12 +25,10 @@ const BlogDetails = () => {
     setBlog(newBlog);
   }, []);
 
-  const handleClick = () => {
-    fetch("http://localhost:4000/find" + blog.id, {
-      method: "DELETE",
-    }).then(() => {
-      history.push("/");
-    });
+  const onDelete = async (blogId) => {
+    await axios.delete(`${serverUrl}delete/${blogId}`);
+
+    history.push("/");
   };
 
   return (
@@ -38,7 +43,7 @@ const BlogDetails = () => {
           <h2>{blog.title}</h2>
           <p>Written by {blog.author}</p>
           <div className="blog-body">{blog.body}</div>
-          <button onClick={handleClick}>delete</button>
+          <button onClick={() => onDelete(blog.id)}>delete</button>
         </article>
       )}
     </div>
